@@ -17,31 +17,38 @@ data_files = [
     ('share/man/man1', ['docs/man/glances.1'])
 ]
 
-if hasattr(sys, 'real_prefix') or (sys.platform in ('bsd', 'darwin')):
+if hasattr(sys, 'real_prefix') or 'bsd' in sys.platform:
     etc_path = os.path.join(sys.prefix, 'etc', 'glances')
 if not hasattr(sys, 'real_prefix') and 'linux' in sys.platform:
     etc_path = os.path.join('/etc', 'glances')
+elif 'darwin' in sys.platform:
+    etc_path = os.path.join('/usr/local', 'etc', 'glances')
 data_files.append((etc_path, ['glances/conf/glances.conf']))
 
 for mo in glob.glob('i18n/*/LC_MESSAGES/*.mo'):
     data_files.append((os.path.dirname(mo).replace('i18n/', 'share/locale/'), [mo]))
 
+if sys.platform.startswith('win'):
+    requires = ['psutil>=0.5.1', 'colorconsole==0.6']
+else:
+    requires = ['psutil>=0.5.1']
+    
 setup(
     name='Glances',
-    version='1.7a',
+    version='1.7.1',
     description="A cross-platform curses-based monitoring tool",
     long_description=open('README.rst').read(),
     author='Nicolas Hennion',
     author_email='nicolas@nicolargo.com',
     url='https://github.com/nicolargo/glances',
-    download_url='https://s3.amazonaws.com/glances/glances-1.7a.tar.gz',
+    # Alternative download_url='https://s3.amazonaws.com/glances/glances-1.7.1.tar.gz',
     license="LGPL",
     keywords="cli curses monitoring system",
-    install_requires=['psutil>=0.4.1'],
+    install_requires=requires,
     extras_require={
-        'HTML': ['jinja2>=2.0'],
-        'SENSORS': ['pysensors>=0.0.2'],
-        'BATINFO': ['batinfo>=0.1.3']
+        'HTML': ['jinja2'],
+        'SENSORS': ['pysensors'],
+        'BATINFO': ['batinfo']
     },
     packages=['glances'],
     include_package_data=True,

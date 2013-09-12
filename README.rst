@@ -2,6 +2,10 @@
         :target: https://flattr.com/thing/484466/nicolargoglances-on-GitHub
 .. image:: https://travis-ci.org/nicolargo/glances.png?branch=master
         :target: https://travis-ci.org/nicolargo/glances
+.. image:: https://badge.fury.io/py/Glances.png
+    :target: http://badge.fury.io/py/Glances
+.. image:: https://pypip.in/d/Glances/badge.png
+        :target: https://crate.io/packages/Glances
 
 ===============================
 Glances - An eye on your system
@@ -30,13 +34,26 @@ Requirements
 Installation
 ============
 
+PyPI: The simple way
+--------------------
+
 Glances is on `PyPI`_. To install, simply use `pip`_:
 
 .. code-block:: console
 
     pip install Glances
 
-*Note*: On Debian/Ubuntu, you need to install first the `python-dev` package.
+*Note*:
+
+On Debian/Ubuntu, you need to install first the *python-dev* package.
+
+On CentOS/Fedora, you need to install first the *python-devel* package (from the EPEL repository).
+
+To upgrade Glances to the latest version:
+
+.. code-block:: console
+
+    pip install --upgrade Glances
 
 Linux
 -----
@@ -98,18 +115,21 @@ MacPorts
 Windows
 -------
 
-Windows only support Glances in server mode. Glances will automatically run in server mode on it.
+Glances 1.7.2 proposes a Windows client based on the `colorconsole`_ Python librairy.
 
-Thanks to `Nicolas Bourges`, Glances can be easily installed using a Windows installer:
+Version < 1.7.2 only support Glances in server mode. Glances will automatically run in server mode on it.
+
+Thanks to Nicolas Bourges, Glances can be easily installed using a Windows installer:
 
 - glances-1.6.1-x86.exe_ (32-bit, md5sum: 13d5be664599f80152f8f1ae47400576)
 - glances-1.6.1-x64.exe_ (64-bit, md5sum: a347ec5097d6d4d5039c7233872757a8)
 
 Otherwise, you have to follow these steps:
 
-- Install `Python for Windows`: http://www.python.org/getit/
-- Install the `psutil` library: https://code.google.com/p/psutil/downloads/list
-- Download `Glances` from here: http://nicolargo.github.io/glances/
+- Install Python for Windows: http://www.python.org/getit/
+- Install the psutil library: https://code.google.com/p/psutil/downloads/list
+- Install the colorconsole library: http://code.google.com/p/colorconsole/downloads/list
+- Download Glances from here: http://nicolargo.github.io/glances/
 
 Source
 ------
@@ -123,7 +143,13 @@ To install Glances from source:
     $ cd glances-*
     # python setup.py install
 
-*Note*: On Debian/Ubuntu, you need to install first the `python-dev` package.
+*Note*:
+
+On Debian/Ubuntu, you need to install first the *python-dev* package.
+
+On CentOS/Fedora, you need to install first the *python-devel* package (from the EPEL repository).
+
+On openSUSE/SLES/SLED, you need to install first the *python-devel* package. (from Oss repository).
 
 Puppet
 ------
@@ -162,5 +188,6 @@ LGPL. See ``COPYING`` for more details.
 .. _MacPorts: https://www.macports.org/
 .. _glances-1.6.1-x86.exe: https://s3.amazonaws.com/glances/glances-1.6.1-x86.exe
 .. _glances-1.6.1-x64.exe: https://s3.amazonaws.com/glances/glances-1.6.1-x64.exe
+.. _colorconsole: https://pypi.python.org/pypi/colorconsole
 .. _Puppet: https://puppetlabs.com/puppet/what-is-puppet/
 .. _glances-doc: https://github.com/nicolargo/glances/blob/master/docs/glances-doc.rst
